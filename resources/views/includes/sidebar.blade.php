@@ -17,9 +17,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/pengaduan" class="nav-link {{ Request::is('pengaduan') ? 'active' : '' }}">
+                    <a href="/pegawai" class="nav-link {{ Request::is('pegawai') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-link"></i>
-                        <p>Pengaduan</p>
+                        <p>Pegawai</p>
                     </a>
                 </li>
                 <li class="nav-item">
