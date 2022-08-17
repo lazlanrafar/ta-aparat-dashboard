@@ -18,7 +18,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/pegawai" class="nav-link {{ Request::is('pegawai') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-link"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>Pegawai</p>
                     </a>
                 </li>
