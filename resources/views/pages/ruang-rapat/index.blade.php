@@ -26,7 +26,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Kategori</th>
+                                        <th>Nama Ruangan</th>
+                                        <th>Kapasitas</th>
+                                        <th>Lokasi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -35,7 +37,9 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $item->nama_kategori }}</td>
+                                            <td>{{ $item->nama_ruangan }}</td>
+                                            <td>{{ $item->kapasitas }}</td>
+                                            <td>{{ $item->lokasi }}</td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
                                                     action="{{ route('ruang-rapat.destroy', $item->id) }}" method="POST"
