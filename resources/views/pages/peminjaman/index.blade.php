@@ -26,9 +26,12 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Tanggal</th>
                                         <th>Nama Ruangan</th>
-                                        <th>Kapasitas</th>
-                                        <th>Lokasi</th>
+                                        <th>Agenda</th>
+                                        <th>Tanggal Booking</th>
+                                        <th>Status Apv 1</th>
+                                        <th>Status Apv 2</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -37,9 +40,12 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $item->nama_ruangan }}</td>
-                                            <td>{{ $item->kapasitas }}</td>
-                                            <td>{{ $item->lokasi }}</td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td>{{ $item->ruangan->nama_ruangan }}</td>
+                                            <td>{{ $item->agenda }}</td>
+                                            <td>{{ $item->tgl_booking }}</td>
+                                            <td>{{ $item->status_approv1 }}</td>
+                                            <td>{{ $item->status_approv2 }}</td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
                                                     action="{{ route('peminjaman.destroy', $item->id) }}" method="POST"
@@ -69,14 +75,9 @@
                                                         })
                                                     }
                                                 </script>
-                                                <a type="button" class="btn btn-warning" data-toggle="modal"
-                                                    data-target="#formUpdate{{ $item->id }}">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>
-                                        @include('pages.peminjaman.update')
                                     @endforeach
                                 </tbody>
                             </table>

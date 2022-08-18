@@ -26,4 +26,8 @@ class Peminjaman extends Model
         'status_approv1',
         'status_approv2',
     ];
+
+    public function ruangan(){
+        return $this->belongsTo('App\Models\Ruangan', 'id_ruangan');
+    }
 }
