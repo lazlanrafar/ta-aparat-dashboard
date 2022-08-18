@@ -27,8 +27,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Tanggal</th>
-                                        <th>Agenda</th>
-                                        <th>Isi Notulen</th>
+                                        <th>Peminjaman</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -37,9 +36,13 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $item->tgl_notulen }}</td>
-                                            <td>{{ $item->agenda }}</td>
-                                            <td>{{ $item->isi_notulen }}</td>
+                                            <td>{{ $item->tgl_absensi }}</td>
+                                            <td>
+                                                {{ $item->peminjaman->agenda }} /
+                                                {{ $item->peminjaman->tgl_booking }} /
+                                                {{ $item->peminjaman->jam_mulai }} sd
+                                                {{ $item->peminjaman->jam_selesai }}
+                                            </td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
                                                     action="{{ route('absensi.destroy', $item->id) }}" method="POST"
