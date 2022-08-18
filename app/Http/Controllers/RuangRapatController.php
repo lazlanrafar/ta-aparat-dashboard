@@ -55,6 +55,8 @@ class RuangRapatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Ruangan::findOrFail($id);
+        $item->delete();
+        return redirect()->route('ruang-rapat.index')->with('success', 'Data berhasil dihapus');
     }
 }
