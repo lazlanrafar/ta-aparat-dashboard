@@ -33,6 +33,7 @@
                                         <th>NIP</th>
                                         <th>Nama</th>
                                         <th>Jabatan</th>
+                                        <th>TTD</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +44,9 @@
                                             <td>{{ $item->nip }}</td>
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->jabatan }}</td>
+                                            <td>
+                                                <img src="{{ $item->ttd }}" width="100" alt="ttd">
+                                            </td>
                                         </tr>
                                         <?php $i++; ?>
                                     @endforeach

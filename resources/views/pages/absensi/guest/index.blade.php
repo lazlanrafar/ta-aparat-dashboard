@@ -40,8 +40,10 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="ttd">Tanda Tangan*</label>
-                                <input type="text" class="form-control" id="ttd" placeholder="Masukan Tanda Tangan"
+                                <input type="hidden" class="form-control" id="ttd" placeholder="Masukan Tanda Tangan"
                                     name="ttd" required />
+                                <br>
+                                <canvas class="border" onclick="handleTTD()"></canvas>
                             </div>
                         </div>
                     </div>

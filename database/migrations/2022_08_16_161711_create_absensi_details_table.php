@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('nip');
             $table->string('nama');
             $table->string('jabatan');
-            $table->string('ttd');
+            $table->text('ttd');
             $table->timestamps();
         });
     }
