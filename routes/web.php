@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GantiPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ Route::get('/login', [AuthController::class, 'index'])->name('login')->middlewar
 Route::post('/login', [AuthController::class, 'authenticate']);
 
 Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::resource('/ganti-password', GantiPasswordController::class)->middleware('auth');
 
 Route::resource('/', DashboardController::class)->middleware('auth');
 Route::resource('/pegawai', PegawaiController::class)->middleware('auth');
