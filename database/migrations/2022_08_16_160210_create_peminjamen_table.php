@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->integer('id_user');
             $table->integer('id_ruangan');
-            $table->date('tgl_pinjam');
             $table->date('tgl_booking');
             $table->string('jam_mulai');
             $table->string('jam_selesai');

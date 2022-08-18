@@ -56,6 +56,8 @@ class NotulenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Notulen::findOrFail($id);
+        $item->delete();
+        return redirect()->route('notulen.index')->with('success', 'Data berhasil dihapus');
     }
 }
