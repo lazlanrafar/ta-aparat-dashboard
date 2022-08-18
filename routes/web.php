@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PegawaiController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', DashboardController::class);
+Route::resource('/pegawai', PegawaiController::class);

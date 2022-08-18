@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('id_ruangan');
             $table->date('tgl_pinjam');
             $table->date('tgl_booking');
-            $table->timestamp('jam_mulai');
-            $table->timestamp('jam_selesai');
+            $table->string('jam_mulai');
+            $table->string('jam_selesai');
             $table->integer('jumlah_peserta');
             $table->string('agenda');
             $table->string('status_approv1');
