@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Absensi;
+use App\Models\AbsensiDetail;
 use App\Models\Peminjaman;
 
 class AbsenController extends Controller
@@ -45,7 +46,13 @@ class AbsenController extends Controller
      */
     public function show($id)
     {
-        //
+        $items = AbsensiDetail::where('id_absensi', $id)->get();
+        $id_absensi = $id;
+
+        return view('pages.absensi.detail', [
+            'items' => $items,
+            'id_absensi' => $id_absensi
+        ]);
     }
 
     /**

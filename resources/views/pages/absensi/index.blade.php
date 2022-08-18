@@ -76,6 +76,9 @@
                                                     data-target="#formUpdate{{ $item->id }}">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
+                                                <a href="/absensi/{{ $item->id }}" class="btn btn-primary">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

@@ -10,6 +10,7 @@ use App\Http\Controllers\RuangRapatController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\NotulenController;
 use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\AbsenDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::resource('/ruang-rapat', RuangRapatController::class)->middleware('auth')
 Route::resource('/peminjaman', PeminjamanController::class)->middleware('auth');
 Route::resource('/notulen', NotulenController::class)->middleware('auth');
 Route::resource('/absensi', AbsenController::class)->middleware('auth');
+
+Route::get('/absensi-detail/{id}', [AbsenDetailController::class, 'index'])->name('absensi-detail');
+Route::post('/absensi-detail', [AbsenDetailController::class, 'store']);
