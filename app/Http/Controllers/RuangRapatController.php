@@ -34,28 +34,6 @@ class RuangRapatController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -64,7 +42,9 @@ class RuangRapatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Ruangan::findOrFail($id);
+        $item->update($request->all());
+        return redirect()->route('ruang-rapat.index')->with('success', 'Data berhasil diubah');
     }
 
     /**

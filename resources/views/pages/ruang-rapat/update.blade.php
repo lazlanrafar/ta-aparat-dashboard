@@ -7,8 +7,8 @@
                 @csrf
                 @method('PUT')
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formUpdate{{ $item->id }}Label">
-                        Tambah Kategori
+                    <h5 class="modal-title" id="formCreateLabel">
+                        Update Ruangan
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -16,10 +16,19 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nama_kategori">Nama Kategori</label>
-                        <input type="text" class="form-control" id="nama_kategori"
-                            placeholder="Masukan nama kategori" name="nama_kategori" required
-                            value="{{ $item->nama_kategori }}" />
+                        <label for="nama_ruangan">Nama Ruangan</label>
+                        <input type="text" class="form-control" id="nama_ruangan" placeholder="Masukan Nama Ruangan"
+                            name="nama_ruangan" required value="{{ $item->nama_ruangan }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="kapasitas">Kapasitas</label>
+                        <input type="number" class="form-control" id="kapasitas" placeholder="Masukan Kapasitas"
+                            name="kapasitas" required value="{{ $item->kapasitas }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lokasi">Lokasi</label>
+                        <input type="text" class="form-control" id="lokasi" placeholder="Masukan Lokasi"
+                            name="lokasi" required value="{{ $item->lokasi }}" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -27,7 +36,7 @@
                         Close
                     </button>
                     <button type="submit" class="btn btn-primary">
-                        Update
+                        Simpan
                     </button>
                 </div>
             </form>
