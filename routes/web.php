@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +17,10 @@ use App\Http\Controllers\PegawaiController;
 |
 */
 
-Route::resource('/', DashboardController::class);
-Route::resource('/pegawai', PegawaiController::class);
+Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticate']);
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::resource('/', DashboardController::class)->middleware('auth');
+Route::resource('/pegawai', PegawaiController::class)->middleware('auth');
