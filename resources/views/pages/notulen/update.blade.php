@@ -3,12 +3,12 @@
     aria-labelledby="formUpdate{{ $item->id }}Label" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{{ route('ruang-rapat.update', $item->id) }}" method="POST">
+            <form action="{{ route('notulen.update', $item->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-header">
                     <h5 class="modal-title" id="formCreateLabel">
-                        Update Ruangan
+                        Update Notulen
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -16,19 +16,18 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nama_ruangan">Nama Ruangan</label>
-                        <input type="text" class="form-control" id="nama_ruangan" placeholder="Masukan Nama Ruangan"
-                            name="nama_ruangan" required value="{{ $item->nama_ruangan }}" />
+                        <label for="tgl_notulen">Tanggal Notulen</label>
+                        <input type="date" class="form-control" id="tgl_notulen"
+                            placeholder="Masukan Tanggal Notulen" name="tgl_notulen" required
+                            value="{{ $item->tgl_notulen }}" />
                     </div>
                     <div class="form-group">
-                        <label for="kapasitas">Kapasitas</label>
-                        <input type="number" class="form-control" id="kapasitas" placeholder="Masukan Kapasitas"
-                            name="kapasitas" required value="{{ $item->kapasitas }}" />
+                        <label for="agenda">Agenda Acara</label>
+                        <textarea class="form-control" name="agenda" id="agenda" rows="3" placeholder="Masukan Agenda Acara">{{ $item->agenda }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="lokasi">Lokasi</label>
-                        <input type="text" class="form-control" id="lokasi" placeholder="Masukan Lokasi"
-                            name="lokasi" required value="{{ $item->lokasi }}" />
+                        <label for="isi_notulen">Isi Notulen</label>
+                        <textarea class="form-control" name="isi_notulen" id="isi_notulen" rows="5" placeholder="Masukan Isi Notulen">{{ $item->isi_notulen }}</textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
