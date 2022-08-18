@@ -64,6 +64,7 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('pegawai.index')->with('success', 'Data berhasil dihapus');
     }
 }
