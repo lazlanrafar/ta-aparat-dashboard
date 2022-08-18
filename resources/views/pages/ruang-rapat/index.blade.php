@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Pegawai</h1>
+                    <h1>Ruang Rapat</h1>
                 </div>
             </div>
         </div>
@@ -21,18 +21,14 @@
                         <div class="card-body">
                             <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#formCreate"><i
                                     class="fa fa-plus"></i> Tambah</a>
-                            @include('pages.pegawai.create')
+                            @include('pages.ruang-rapat.create')
                             <table id="defaultTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>NIP</th>
-                                        <th>Nama</th>
-                                        <th>No Telp</th>
-                                        <th>Email</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Jabatan</th>
-                                        <th>Level</th>
+                                        <th>Nama Ruangan</th>
+                                        <th>Kapasitas</th>
+                                        <th>Lokasi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -41,16 +37,12 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $item->nip }}</td>
-                                            <td>{{ $item->nama }}</td>
-                                            <td>{{ $item->notelp }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td>{{ $item->jenis_kelamin }}</td>
-                                            <td>{{ $item->jabatan }}</td>
-                                            <td>{{ $item->level }}</td>
+                                            <td>{{ $item->nama_ruangan }}</td>
+                                            <td>{{ $item->kapasitas }}</td>
+                                            <td>{{ $item->lokasi }}</td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
-                                                    action="{{ route('pegawai.destroy', $item->id) }}" method="POST"
+                                                    action="{{ route('ruang-rapat.destroy', $item->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
                                                     @method('delete')
@@ -84,7 +76,7 @@
                                             </td>
                                         </tr>
                                         <?php $i++; ?>
-                                        @include('pages.pegawai.update')
+                                        @include('pages.ruang-rapat.update')
                                     @endforeach
                                 </tbody>
                             </table>

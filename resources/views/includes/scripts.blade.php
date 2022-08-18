@@ -69,3 +69,20 @@
         });
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+<script>
+    const canvas = document.querySelector("canvas");
+    const signaturePad = new SignaturePad(canvas);
+
+
+    const data = signaturePad.toDataURL("image/svg+xml");
+    document.getElementById("ttd").value = data;
+
+    function handleTTD() {
+
+        const data = signaturePad.toDataURL("image/svg+xml");
+        console.log(data);
+        document.getElementById("ttd").value = data;
+    }
+</script>

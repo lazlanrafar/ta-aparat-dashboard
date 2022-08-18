@@ -18,4 +18,8 @@ class Absensi extends Model
         'id_peminjaman',
         'tgl_absensi',
     ];
+
+    public function peminjaman(){
+        return $this->belongsTo('App\Models\Peminjaman', 'id_peminjaman');
+    }
 }

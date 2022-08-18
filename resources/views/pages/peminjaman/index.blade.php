@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Pegawai</h1>
+                    <h1>Peminjaman</h1>
                 </div>
             </div>
         </div>
@@ -21,18 +21,17 @@
                         <div class="card-body">
                             <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#formCreate"><i
                                     class="fa fa-plus"></i> Tambah</a>
-                            @include('pages.pegawai.create')
+                            @include('pages.peminjaman.create')
                             <table id="defaultTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>NIP</th>
-                                        <th>Nama</th>
-                                        <th>No Telp</th>
-                                        <th>Email</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Jabatan</th>
-                                        <th>Level</th>
+                                        <th>Tanggal</th>
+                                        <th>Nama Ruangan</th>
+                                        <th>Agenda</th>
+                                        <th>Tanggal Booking</th>
+                                        <th>Status Apv 1</th>
+                                        <th>Status Apv 2</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -41,16 +40,15 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $item->nip }}</td>
-                                            <td>{{ $item->nama }}</td>
-                                            <td>{{ $item->notelp }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td>{{ $item->jenis_kelamin }}</td>
-                                            <td>{{ $item->jabatan }}</td>
-                                            <td>{{ $item->level }}</td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td>{{ $item->ruangan->nama_ruangan }}</td>
+                                            <td>{{ $item->agenda }}</td>
+                                            <td>{{ $item->tgl_booking }}</td>
+                                            <td>{{ $item->status_approv1 }}</td>
+                                            <td>{{ $item->status_approv2 }}</td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
-                                                    action="{{ route('pegawai.destroy', $item->id) }}" method="POST"
+                                                    action="{{ route('peminjaman.destroy', $item->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
                                                     @method('delete')
@@ -77,14 +75,9 @@
                                                         })
                                                     }
                                                 </script>
-                                                <a type="button" class="btn btn-warning" data-toggle="modal"
-                                                    data-target="#formUpdate{{ $item->id }}">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>
-                                        @include('pages.pegawai.update')
                                     @endforeach
                                 </tbody>
                             </table>

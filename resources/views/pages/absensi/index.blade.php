@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Pegawai</h1>
+                    <h1>Absensi</h1>
                 </div>
             </div>
         </div>
@@ -21,18 +21,13 @@
                         <div class="card-body">
                             <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#formCreate"><i
                                     class="fa fa-plus"></i> Tambah</a>
-                            @include('pages.pegawai.create')
+                            @include('pages.absensi.create')
                             <table id="defaultTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>NIP</th>
-                                        <th>Nama</th>
-                                        <th>No Telp</th>
-                                        <th>Email</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Jabatan</th>
-                                        <th>Level</th>
+                                        <th>Tanggal</th>
+                                        <th>Peminjaman</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -41,16 +36,16 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $item->nip }}</td>
-                                            <td>{{ $item->nama }}</td>
-                                            <td>{{ $item->notelp }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td>{{ $item->jenis_kelamin }}</td>
-                                            <td>{{ $item->jabatan }}</td>
-                                            <td>{{ $item->level }}</td>
+                                            <td>{{ $item->tgl_absensi }}</td>
+                                            <td>
+                                                {{ $item->peminjaman->agenda }} /
+                                                {{ $item->peminjaman->tgl_booking }} /
+                                                {{ $item->peminjaman->jam_mulai }} sd
+                                                {{ $item->peminjaman->jam_selesai }}
+                                            </td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
-                                                    action="{{ route('pegawai.destroy', $item->id) }}" method="POST"
+                                                    action="{{ route('absensi.destroy', $item->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
                                                     @method('delete')
@@ -81,10 +76,13 @@
                                                     data-target="#formUpdate{{ $item->id }}">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
+                                                <a href="/absensi/{{ $item->id }}" class="btn btn-primary">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>
-                                        @include('pages.pegawai.update')
+                                        @include('pages.absensi.update')
                                     @endforeach
                                 </tbody>
                             </table>

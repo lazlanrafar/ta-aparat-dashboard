@@ -15,19 +15,12 @@ class PegawaiController extends Controller
     public function index()
     {
         $items = User::all();
-        return view('pages.pegawai.index', [
-            'items' => $items
-        ]);
-    }
+        $list_level = ['Pegawai', 'Administrasi Umum', 'Kabag Umum', 'Kasubbag Kepegawaian'];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('pages.pegawai.index', [
+            'items' => $items,
+            'list_level' => $list_level
+        ]);
     }
 
     /**
@@ -38,29 +31,10 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
+        return redirect()->route('pegawai.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -72,7 +46,14 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        if(empty($data['password'])) {
+            unset($data['password']);
+        } else {
+            $data['password'] = Hash::make($data['password']);
+        }
+        User::find($id)->update($data);
+        return redirect()->route('pegawai.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -83,6 +64,7 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('pegawai.index')->with('success', 'Data berhasil dihapus');
     }
 }
