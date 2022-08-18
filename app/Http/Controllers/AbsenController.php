@@ -70,6 +70,7 @@ class AbsenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Absensi::find($id)->delete();
+        return redirect()->route('absensi.index')->with('success', 'Data berhasil dihapus');
     }
 }
