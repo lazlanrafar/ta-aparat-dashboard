@@ -7,6 +7,8 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GantiPasswordController;
 use App\Http\Controllers\RuangRapatController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\NotulenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,5 @@ Route::resource('/ganti-password', GantiPasswordController::class)->middleware('
 Route::resource('/', DashboardController::class)->middleware('auth');
 Route::resource('/pegawai', PegawaiController::class)->middleware('auth');
 Route::resource('/ruang-rapat', RuangRapatController::class)->middleware('auth');
+Route::resource('/peminjaman', PeminjamanController::class)->middleware('auth');
+Route::resource('/notulen', NotulenController::class)->middleware('auth');

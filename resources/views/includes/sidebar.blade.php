@@ -29,39 +29,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/karyawan" class="nav-link {{ Request::is('karyawan') ? 'active' : '' }}">
+                    <a href="/peminjaman" class="nav-link {{ Request::is('peminjaman') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
-                        <p>Karyawan</p>
+                        <p>Peminjaman</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/kategori" class="nav-link {{ Request::is('kategori') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>Kategori</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/sub-kategori" class="nav-link {{ Request::is('sub-kategori') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>Sub Kategori</p>
-                    </a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a href="/laporan" class="nav-link {{ Request::is('laporan') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-clock"></i>
-                        <p>Riwayat Pengaduan</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/laporan" class="nav-link {{ Request::is('laporan') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>Laporan</p>
-                    </a>
-                </li> --}}
-                <li class="nav-item">
-                    <a href="/user" class="nav-link {{ Request::is('user') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>User</p>
+                    <a href="/notulen" class="nav-link {{ Request::is('notulen') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>Notulen</p>
                     </a>
                 </li>
             </ul>
