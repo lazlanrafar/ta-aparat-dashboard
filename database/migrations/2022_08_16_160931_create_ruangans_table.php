@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_ruangan');
             $table->string('kapasitas');
             $table->string('lokasi');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -23,9 +23,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/lokasi" class="nav-link {{ Request::is('lokasi') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-code-branch"></i>
-                        <p>Lokasi</p>
+                    <a href="/ruang-rapat" class="nav-link {{ Request::is('ruang-rapat') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>Ruang Rapat</p>
                     </a>
                 </li>
                 <li class="nav-item">
