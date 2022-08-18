@@ -45,14 +45,17 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
-                                <input type="text" class="form-control" id="jenis_kelamin"
-                                    placeholder="Masukan Jenis Kelamin" name="jenis_kelamin" required />
+                                <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+                                    <option value="" selected>-- pilih Jenis Kelamin --</option>
+                                    <option value="Laki-Laki">Laki-Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="email">Email Address</label>
-                                <input type="text" class="form-control" id="email"
+                                <input type="email" class="form-control" id="email"
                                     placeholder="Masukan Email Address" name="email" required />
                             </div>
                         </div>

@@ -26,7 +26,13 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Kategori</th>
+                                        <th>NIP</th>
+                                        <th>Nama</th>
+                                        <th>No Telp</th>
+                                        <th>Email</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Jabatan</th>
+                                        <th>Level</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -35,7 +41,13 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $item->nama_kategori }}</td>
+                                            <td>{{ $item->nip }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->notelp }}</td>
+                                            <td>{{ $item->email }}</td>
+                                            <td>{{ $item->jenis_kelamin }}</td>
+                                            <td>{{ $item->jabatan }}</td>
+                                            <td>{{ $item->level }}</td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
                                                     action="{{ route('pegawai.destroy', $item->id) }}" method="POST"
