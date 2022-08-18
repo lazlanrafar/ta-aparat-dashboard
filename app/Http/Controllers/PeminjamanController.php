@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Peminjaman;
+use App\Models\Ruangan;
 
 class PeminjamanController extends Controller
 {
@@ -15,19 +16,12 @@ class PeminjamanController extends Controller
     public function index()
     {
         $items = Peminjaman::all();
-        return view('pages.peminjaman.index', [
-            'items' => $items
-        ]);
-    }
+        $list_ruangan = Ruangan::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('pages.peminjaman.index', [
+            'items' => $items,
+            'list_ruangan' => $list_ruangan
+        ]);
     }
 
     /**
@@ -38,7 +32,12 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['status_approv1'] = 'belum';
+        $data['status_approv2'] = 'belum';
+
+        Peminjaman::create($data);
+        return redirect()->route('peminjaman.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
