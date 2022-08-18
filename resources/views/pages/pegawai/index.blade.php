@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Kategori</h1>
+                    <h1>Pegawai</h1>
                 </div>
             </div>
         </div>

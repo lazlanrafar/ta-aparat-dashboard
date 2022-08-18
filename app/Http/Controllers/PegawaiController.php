@@ -15,19 +15,12 @@ class PegawaiController extends Controller
     public function index()
     {
         $items = User::all();
-        return view('pages.pegawai.index', [
-            'items' => $items
-        ]);
-    }
+        $list_level = ['Pegawai', 'Administrasi Umum', 'Kabag Umum', 'Kasubbag Kepegawaian'];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('pages.pegawai.index', [
+            'items' => $items,
+            'list_level' => $list_level
+        ]);
     }
 
     /**
@@ -38,7 +31,10 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
+        return redirect()->route('pegawai.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
