@@ -9,6 +9,7 @@ use App\Http\Controllers\GantiPasswordController;
 use App\Http\Controllers\RuangRapatController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\NotulenController;
+use App\Http\Controllers\AbsenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,4 @@ Route::resource('/pegawai', PegawaiController::class)->middleware('auth');
 Route::resource('/ruang-rapat', RuangRapatController::class)->middleware('auth');
 Route::resource('/peminjaman', PeminjamanController::class)->middleware('auth');
 Route::resource('/notulen', NotulenController::class)->middleware('auth');
+Route::resource('/absensi', AbsenController::class)->middleware('auth');

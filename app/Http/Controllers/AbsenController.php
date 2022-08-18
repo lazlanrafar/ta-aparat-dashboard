@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Peminjaman;
-use App\Models\Ruangan;
 
-class PeminjamanController extends Controller
+use App\Models\Absensi;
+use App\Models\Peminjaman;
+
+class AbsenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +16,12 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $items = Peminjaman::all();
-        $list_ruangan = Ruangan::all();
+        $items = Absensi::all();
+        $list_peminjaman = Peminjaman::all();
 
-        return view('pages.peminjaman.index', [
+        return view('pages.absensi.index', [
             'items' => $items,
-            'list_ruangan' => $list_ruangan
+            'list_peminjaman' => $list_peminjaman
         ]);
     }
 
@@ -32,12 +33,30 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['status_approv1'] = 'belum';
-        $data['status_approv2'] = 'belum';
+        Absensi::create($request->all());
+        return redirect()->route('absensi.index')->with('success', 'Data berhasil ditambahkan');
+    }
 
-        Peminjaman::create($data);
-        return redirect()->route('peminjaman.index')->with('success', 'Data berhasil ditambahkan');
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -60,7 +79,6 @@ class PeminjamanController extends Controller
      */
     public function destroy($id)
     {
-        Peminjaman::find($id)->delete();
-        return redirect()->route('peminjaman.index')->with('success', 'Data berhasil dihapus');
+        //
     }
 }

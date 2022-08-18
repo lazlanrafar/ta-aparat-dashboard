@@ -40,6 +40,12 @@
                         <p>Notulen</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/absensi" class="nav-link {{ Request::is('absensi') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>Absensi</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
