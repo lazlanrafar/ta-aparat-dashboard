@@ -46,6 +46,12 @@
                         <p>Absensi</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/laporan" class="nav-link {{ Request::is('laporan') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>Laporan</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
