@@ -15,9 +15,15 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $items = Peminjaman::all();
         $list_ruangan = Ruangan::all();
         $level = auth()->user()->level;
+
+        if($level == 'Kabag Umum' || $level == 'Kasubbag Kepegawaian'){
+            $items = Peminjaman::where('status', '!=', 'Menunggu')
+                ->get();
+        }else{
+            $items = Peminjaman::all();
+        }
 
         return view('pages.peminjaman.index', [
             'items' => $items,
@@ -64,10 +70,10 @@ class PeminjamanController extends Controller
             $item->status = 'Diverifikasi';
         }
         if($status == 'status_approv1'){
-            $item->status = 'Disetujui';
+            $item->status_approv1 = 'Disetujui';
         }
         if($status == 'status_approv2'){
-            $item->status = 'Disetujui';
+            $item->status_approv2 = 'Disetujui';
         }
 
         $item->save();
