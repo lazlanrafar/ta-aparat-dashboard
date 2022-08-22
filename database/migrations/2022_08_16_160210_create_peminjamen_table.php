@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('jam_selesai');
             $table->integer('jumlah_peserta');
             $table->string('agenda');
+            $table->string('status');
             $table->string('status_approv1');
             $table->string('status_approv2');
             $table->timestamps();

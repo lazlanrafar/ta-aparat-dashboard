@@ -30,6 +30,7 @@
                                         <th>Nama Ruangan</th>
                                         <th>Agenda</th>
                                         <th>Tanggal Booking</th>
+                                        <th>Status</th>
                                         <th>Status Apv 1</th>
                                         <th>Status Apv 2</th>
                                         <th>Aksi</th>
@@ -44,6 +45,7 @@
                                             <td>{{ $item->ruangan->nama_ruangan }}</td>
                                             <td>{{ $item->agenda }}</td>
                                             <td>{{ $item->tgl_booking }}</td>
+                                            <td>{{ $item->status }}</td>
                                             <td>{{ $item->status_approv1 }}</td>
                                             <td>{{ $item->status_approv2 }}</td>
                                             <td>
