@@ -110,6 +110,15 @@
                                                     <a href="/peminjaman/{{ $item->id }}/tolak"
                                                         class="btn btn-danger">Tolak</a>
                                                 @endif
+
+                                                @if ($item->status == 'Diverifikasi' &&
+                                                    $item->status_approv1 == 'Disetujui' &&
+                                                    $item->status_approv2 == 'Disetujui')
+                                                    <a href="/peminjaman-print/{{ $item->id }}" target="_BLANK"
+                                                        class="btn btn-primary">
+                                                        <i class="fa fa-print"></i>
+                                                    </a>
+                                                @endif
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

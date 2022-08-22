@@ -79,6 +79,24 @@ class PeminjamanController extends Controller
         $item->save();
         return redirect()->route('peminjaman.index')->with('success', 'Data berhasil diubah');
     }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function print($id)
+    {
+        $data = Peminjaman::find($id);
+        $date_now = date('d F Y');
+
+        return view('pages.peminjaman.document-persetujuan', [
+            'data' => $data,
+            'date_now' => $date_now
+        ]);
+    }
 
     /**
      * Remove the specified resource from storage.
