@@ -26,8 +26,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Agenda</th>
                                         <th>Tanggal</th>
-                                        <th>Peminjaman</th>
+                                        <th>Jam</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -36,10 +37,13 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <td>{{ $item->tgl_absensi }}</td>
                                             <td>
-                                                {{ $item->peminjaman->agenda }} /
-                                                {{ $item->peminjaman->tgl_booking }} /
+                                                {{ $item->peminjaman->agenda }}
+                                            </td>
+                                            <td>
+                                                {{ $item->peminjaman->tgl_booking }}
+                                            </td>
+                                            <td>
                                                 {{ $item->peminjaman->jam_mulai }} sd
                                                 {{ $item->peminjaman->jam_selesai }}
                                             </td>
@@ -72,10 +76,6 @@
                                                         })
                                                     }
                                                 </script>
-                                                <a type="button" class="btn btn-warning" data-toggle="modal"
-                                                    data-target="#formUpdate{{ $item->id }}">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
                                                 <a href="/absensi/{{ $item->id }}" class="btn btn-primary">
                                                     <i class="fa fa-eye"></i>
                                                 </a>

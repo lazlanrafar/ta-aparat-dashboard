@@ -28,12 +28,6 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="tgl_absensi">Tanggal Absensi</label>
-                        <input type="date" class="form-control" id="tgl_absensi"
-                            placeholder="Masukan Tanggal Absensi" name="tgl_absensi" required
-                            value="{{ $item->tgl_absensi }}" />
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">

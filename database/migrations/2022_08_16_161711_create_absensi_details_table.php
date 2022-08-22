@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('absensi_details', function (Blueprint $table) {
             $table->id();
             $table->integer('id_absensi');
-            $table->integer('nip');
+            $table->string('nip');
             $table->string('nama');
             $table->string('jabatan');
             $table->text('ttd');

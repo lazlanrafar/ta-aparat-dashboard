@@ -23,6 +23,7 @@ class Peminjaman extends Model
         'jam_selesai',
         'jumlah_peserta',
         'agenda',
+        'status',
         'status_approv1',
         'status_approv2',
     ];

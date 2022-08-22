@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('absensis', function (Blueprint $table) {
             $table->id();
             $table->integer('id_peminjaman');
-            $table->date('tgl_absensi');
             $table->timestamps();
         });
     }

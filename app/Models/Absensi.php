@@ -16,7 +16,6 @@ class Absensi extends Model
      */
     protected $fillable = [
         'id_peminjaman',
-        'tgl_absensi',
     ];
 
     public function peminjaman(){

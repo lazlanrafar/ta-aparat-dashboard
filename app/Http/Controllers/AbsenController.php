@@ -56,6 +56,23 @@ class AbsenController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function print($id)
+    {
+        $items = AbsensiDetail::where('id_absensi', $id)->get();
+        $data = Absensi::find($id);
+
+        return view('pages.absensi.detail-print', [
+            'items' => $items,
+            'data' => $data
+        ]);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
