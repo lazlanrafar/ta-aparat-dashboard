@@ -39,8 +39,10 @@ Route::resource('/peminjaman', PeminjamanController::class)->middleware('auth');
 Route::get('/peminjaman/{id}/{status}', [PeminjamanController::class, 'verify'])->middleware('auth');
 
 Route::resource('/notulen', NotulenController::class)->middleware('auth');
-Route::resource('/absensi', AbsenController::class)->middleware('auth');
 Route::resource('/laporan', LaporanController::class)->middleware('auth');
+
+Route::resource('/absensi', AbsenController::class)->middleware('auth');
+Route::get('/absensi-detail-print/{id}', [AbsenController::class, 'print'])->middleware('auth');
 
 Route::get('/absensi-detail/{id}', [AbsenDetailController::class, 'index'])->name('absensi-detail');
 Route::post('/absensi-detail', [AbsenDetailController::class, 'store']);

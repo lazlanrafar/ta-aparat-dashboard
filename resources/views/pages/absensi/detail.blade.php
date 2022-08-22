@@ -22,11 +22,14 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                @include('includes.error-card')
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <a href="/absensi-detail-print/{{ $id_absensi }}" class="btn btn-primary" target="_BLANK">
+                                <i class="fa fa-print"></i>
+                                print
+                            </a>
+                            <table id="defaultTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
