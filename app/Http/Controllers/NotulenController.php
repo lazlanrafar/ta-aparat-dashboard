@@ -60,4 +60,18 @@ class NotulenController extends Controller
         $item->delete();
         return redirect()->route('notulen.index')->with('success', 'Data berhasil dihapus');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = Notulen::findOrFail($id);
+        return view('pages.notulen.print', [
+            'data' => $data
+        ]);
+    }
 }

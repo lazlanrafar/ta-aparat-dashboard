@@ -39,7 +39,7 @@
                                             <td>{{ $i }}</td>
                                             <td>{{ $item->tgl_notulen }}</td>
                                             <td>{{ $item->agenda }}</td>
-                                            <td>{{ $item->isi_notulen }}</td>
+                                            <td>{{ Str::limit($item->isi_notulen, 100) }}</td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
                                                     action="{{ route('notulen.destroy', $item->id) }}" method="POST"
@@ -73,6 +73,8 @@
                                                     data-target="#formUpdate{{ $item->id }}">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
+                                                <a href="{{ route('notulen.show', $item->id) }}" target="_BLANK"
+                                                    class="btn btn-primary"><i class="fa fa-print"></i></a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>
