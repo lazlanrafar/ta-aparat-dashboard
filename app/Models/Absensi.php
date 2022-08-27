@@ -16,6 +16,10 @@ class Absensi extends Model
      */
     protected $fillable = [
         'id_user',
-        'id_peminjaman',
+        'agenda',
+        'tanggal',
+        'jam_mulai',
+        'jam_selesai',
+        'nama_ruangan',
     ];
 }

@@ -18,11 +18,9 @@ class AbsenController extends Controller
     public function index()
     {
         $items = Absensi::all();
-        $list_peminjaman = Peminjaman::all();
 
         return view('pages.absensi.index', [
             'items' => $items,
-            'list_peminjaman' => $list_peminjaman
         ]);
     }
 
@@ -34,7 +32,10 @@ class AbsenController extends Controller
      */
     public function store(Request $request)
     {
-        Absensi::create($request->all());
+        $item = $request->all();
+        $item['id_user'] = auth()->user()->id;
+
+        Absensi::create($item);
         return redirect()->route('absensi.index')->with('success', 'Data berhasil ditambahkan');
     }
 
