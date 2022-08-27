@@ -2,10 +2,27 @@
 @section('content')
     <div class="container">
         <div class="text-center">
-            <h3>Absen untuk Agenda {{ $data->peminjaman->agenda }}</h3>
-            <p>yang dilakukan pada tanggal {{ $data->peminjaman->tgl_booking }} dari
-                {{ $data->peminjaman->jam_mulai }} sd {{ $data->peminjaman->jam_selesai }}</p>
+            <h3>Daftar Absensi</h3>
         </div>
+        <table>
+            <tr>
+                <td style="min-width: 150px">Nama Ruangan</td>
+                <td style="min-width: 20px">:</td>
+                <td>{{ $data->nama_ruangan }}</td>
+            </tr>
+            <tr>
+                <td>Tanggal</td>
+                <td>:</td>
+                <td>{{ $data->tanggal }}</td>
+            </tr>
+            <tr>
+                <td>Agenda</td>
+                <td>:</td>
+                <td>{{ $data->agenda }}</td>
+            </tr>
+        </table>
+        <br>
+        <br>
         <table class="table">
             <thead>
                 <tr>

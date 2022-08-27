@@ -6,9 +6,9 @@
         <div class="container" style="max-width: 700px">
             <div class="card">
                 <div class="card-header">
-                    <h3>Absen untuk Agenda {{ $data->peminjaman->agenda }}</h3>
-                    <p>yang dilakukan pada tanggal {{ $data->peminjaman->tgl_booking }} dari
-                        {{ $data->peminjaman->jam_mulai }} sd {{ $data->peminjaman->jam_selesai }}</p>
+                    <h3>Absen untuk Agenda {{ $data->agenda }}</h3>
+                    <p>yang dilakukan di ruangan {{ $data->nama_ruangan }} pada tanggal {{ $data->tanggal }} dari
+                        {{ $data->jam_mulai }} sd {{ $data->jam_selesai }}</p>
 
                     <div class="row">
                         @include('includes.error-card')

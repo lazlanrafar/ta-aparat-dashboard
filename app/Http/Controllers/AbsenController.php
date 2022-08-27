@@ -17,7 +17,7 @@ class AbsenController extends Controller
      */
     public function index()
     {
-        $items = Absensi::all();
+        $items = Absensi::where('id_user', '=', auth()->user()->id)->get();
 
         return view('pages.absensi.index', [
             'items' => $items,
