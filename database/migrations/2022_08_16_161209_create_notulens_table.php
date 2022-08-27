@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('id_user');
             $table->date('tgl_notulen');
             $table->string('agenda');
-            $table->string('isi_notulen');
+            $table->text('isi_notulen');
             $table->timestamps();
         });
     }
