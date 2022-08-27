@@ -14,7 +14,7 @@ class NotulenController extends Controller
      */
     public function index()
     {
-        $items = Notulen::all();
+        $items = Notulen::where('id_user', '=', auth()->user()->id)->get();
 
         return view('pages.notulen.index', [
             'items' => $items
@@ -29,7 +29,9 @@ class NotulenController extends Controller
      */
     public function store(Request $request)
     {
-        $item = Notulen::create($request->all());
+        $item = $request->all();
+        $item['id_user'] = auth()->user()->id;
+        Notulen::create($item);
         return redirect()->route('notulen.index')->with('success', 'Data berhasil ditambahkan');
     }
 

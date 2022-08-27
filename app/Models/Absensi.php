@@ -15,10 +15,7 @@ class Absensi extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_user',
         'id_peminjaman',
     ];
-
-    public function peminjaman(){
-        return $this->belongsTo('App\Models\Peminjaman', 'id_peminjaman');
-    }
 }
