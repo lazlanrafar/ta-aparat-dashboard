@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('notulens', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_user');
             $table->date('tgl_notulen');
             $table->string('agenda');
             $table->string('isi_notulen');
