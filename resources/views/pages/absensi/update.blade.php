@@ -15,18 +15,42 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="id_peminjaman">Peminjaman</label>
-                        <select class="form-control" id="id_peminjaman" name="id_peminjaman" required>
-                            <option value="" selected>-- pilih Peminjaman --</option>
-                            @foreach ($list_peminjaman as $l)
-                                <option value="{{ $l->id }}"
-                                    {{ $item->id_peminjaman == $l->id ? 'selected' : '' }}>
-                                    {{ $l->tgl_booking }} /
-                                    {{ $l->agenda }}
-                                </option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="agenda">Agenda</label>
+                                <input type="text" class="form-control" id="agenda" placeholder="Masukan Agenda"
+                                    name="agenda" required value="{{$item->agenda}}" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="nama_ruangan">Nama Ruangan</label>
+                                <input type="text" class="form-control" id="nama_ruangan"
+                                placeholder="Masukan Nama Ruangan" name="nama_ruangan" required value="{{$item->nama_ruangan}}" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="tanggal">Tanggal</label>
+                                <input type="date" class="form-control" id="tanggal"
+                                    placeholder="Masukan Tanggal" name="tanggal" required value="{{$item->tanggal}}" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="jam_mulai">Jam Mulai</label>
+                                <input type="time" class="form-control" id="jam_mulai"
+                                    placeholder="Masukan Jam Mulai" name="jam_mulai" required value="{{$item->jam_mulai}}" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="jam_selesai">Jam Selesai</label>
+                                <input type="time" class="form-control" id="jam_selesai"
+                                    placeholder="Masukan Jam Selesai" name="jam_selesai" required value="{{$item->jam_selesai}}" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

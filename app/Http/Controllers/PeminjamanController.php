@@ -21,7 +21,9 @@ class PeminjamanController extends Controller
         if($level == 'Kabag Umum' || $level == 'Kasubbag Kepegawaian'){
             $items = Peminjaman::where('status', '!=', 'Menunggu')
                 ->get();
-        }else{
+        }else if($level == 'Pegawai'){
+            $items = Peminjaman::where('id_user', '=', auth()->user()->id)->get();
+        } else{
             $items = Peminjaman::all();
         }
 

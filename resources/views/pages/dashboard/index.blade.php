@@ -14,47 +14,62 @@
             <div class="row">
                 @include('includes.error-card')
             </div>
-            <div class="row ">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>{{ $total_pegawai }}</h3>
+            @if(auth()->user()->level != "Pegawai")
+                <div class="row ">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ $total_menunggu }}</h3>
 
-                            <p>Pegawai</p>
+                                <p>Menunggu</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-android-people"></i>
+                            </div>
                         </div>
-                        <div class="icon">
-                            <i class="ion ion-android-people"></i>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>{{ $total_diproses }}</h3>
+
+                                <p>Sedang Diproses</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-grid"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>{{ $total_disetujui }}</h3>
+
+                                <p>Disetujui</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-primary">
+                            <div class="inner">
+                                <h3>{{ $total_ditolak }}</h3>
+
+                                <p>Ditolak</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-calendar"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{ $total_ruangan }}</h3>
-
-                            <p>Ruang Rapat</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-grid"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $total_peminjaman }}</h3>
-
-                            <p>Peminjaman</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-calendar"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -94,6 +109,43 @@
                     </div>
                 </div>
             </div>
+            @if(auth()->user()->level == "Pegawai")
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                Daftar Ruangan
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table id="defaultTable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Ruangan</th>
+                                        <th>Kapasitas</th>
+                                        <th>Lokasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 1; ?>
+                                    @foreach ($list_ruangan as $item)
+                                        <tr>
+                                            <td>{{ $i }}</td>
+                                            <td>{{ $item->nama_ruangan }}</td>
+                                            <td>{{ $item->kapasitas }}</td>
+                                            <td>{{ $item->lokasi }}</td>
+                                        </tr>
+                                        <?php $i++; ?>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </section>
 @endsection

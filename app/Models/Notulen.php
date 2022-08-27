@@ -15,6 +15,7 @@ class Notulen extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_user',
         'tgl_notulen',
         'agenda',
         'isi_notulen',

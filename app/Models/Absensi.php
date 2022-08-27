@@ -15,10 +15,11 @@ class Absensi extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_peminjaman',
+        'id_user',
+        'agenda',
+        'tanggal',
+        'jam_mulai',
+        'jam_selesai',
+        'nama_ruangan',
     ];
-
-    public function peminjaman(){
-        return $this->belongsTo('App\Models\Peminjaman', 'id_peminjaman');
-    }
 }

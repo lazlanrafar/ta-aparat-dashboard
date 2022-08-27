@@ -26,6 +26,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Ruangan</th>
                                         <th>Agenda</th>
                                         <th>Tanggal</th>
                                         <th>Jam</th>
@@ -38,14 +39,17 @@
                                         <tr>
                                             <td>{{ $i }}</td>
                                             <td>
-                                                {{ $item->peminjaman->agenda }}
+                                                {{ $item->nama_ruangan }}
                                             </td>
                                             <td>
-                                                {{ $item->peminjaman->tgl_booking }}
+                                                {{ $item->agenda }}
                                             </td>
                                             <td>
-                                                {{ $item->peminjaman->jam_mulai }} sd
-                                                {{ $item->peminjaman->jam_selesai }}
+                                                {{ $item->tanggal }}
+                                            </td>
+                                            <td>
+                                                {{ $item->jam_mulai }} sd
+                                                {{ $item->jam_selesai }}
                                             </td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
@@ -76,6 +80,12 @@
                                                         })
                                                     }
                                                 </script>
+
+                                                <a type="button" class="btn btn-warning" data-toggle="modal"
+                                                    data-target="#formUpdate{{ $item->id }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+
                                                 <a href="/absensi/{{ $item->id }}" class="btn btn-primary">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
