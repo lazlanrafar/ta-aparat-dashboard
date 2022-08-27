@@ -95,20 +95,56 @@
                                                 @endif
 
                                                 @if ($level == 'Administrasi Umum' && $item->status == 'Menunggu')
-                                                    <a href="/peminjaman/{{ $item->id }}/status"
+                                                    <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status')"
                                                         class="btn btn-primary">Konfirmasi</a>
-                                                    <a href="/peminjaman/{{ $item->id }}/tolak"
-                                                        class="btn btn-danger">Tolak</a>
                                                 @elseif ($level == 'Kabag Umum' && $item->status_approv2 == 'Menunggu')
-                                                    <a href="/peminjaman/{{ $item->id }}/status_approv2"
+                                                    <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status_approv2')"
                                                         class="btn btn-primary">Konfirmasi</a>
-                                                    <a href="/peminjaman/{{ $item->id }}/tolak"
-                                                        class="btn btn-danger">Tolak</a>
                                                 @elseif ($level == 'Kasubbag Kepegawaian' && $item->status_approv1 == 'Menunggu')
-                                                    <a href="/peminjaman/{{ $item->id }}/status_approv1"
+                                                    <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status_approv1')"
                                                         class="btn btn-primary">Konfirmasi</a>
-                                                    <a href="/peminjaman/{{ $item->id }}/tolak"
-                                                        class="btn btn-danger">Tolak</a>
+                                                @endif
+
+                                                <script>
+                                                    function handleKonfirmasi(url) {
+                                                        Swal.fire({
+                                                            title: 'Apakah kamu yakin?',
+                                                            text: "kamu akan mengkonfirmasi peminjaman ini!",
+                                                            icon: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#3085d6',
+                                                            cancelButtonColor: '#d33',
+                                                            confirmButtonText: 'Ya, konfirmasi!'
+                                                        }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                location.href = url
+                                                            }
+                                                        })
+                                                    }
+                                                </script>
+
+                                                @if($level != "Pegawai")
+                                                    @if($item->status == 'Menunggu' || $item->status_approv1 == 'Menunggu' || $item->status_approv2 == 'Menunggu')
+                                                        <a onclick="handleTolak()"
+                                                            class="btn btn-danger">Tolak</a>
+                                                        <script>
+                                                            function handleTolak() {
+                                                                Swal.fire({
+                                                                    title: 'Apakah kamu yakin?',
+                                                                    text: "kamu akan menolak peminjaman ini!",
+                                                                    icon: 'warning',
+                                                                    showCancelButton: true,
+                                                                    confirmButtonColor: '#3085d6',
+                                                                    cancelButtonColor: '#d33',
+                                                                    confirmButtonText: 'Ya, tolak!'
+                                                                }).then((result) => {
+                                                                    if (result.isConfirmed) {
+                                                                        location.href = "/peminjaman/{{ $item->id }}/tolak"
+                                                                    }
+                                                                })
+                                                            }
+                                                        </script>
+                                                    @endif
                                                 @endif
 
                                                 @if ($item->status == 'Diverifikasi' &&
