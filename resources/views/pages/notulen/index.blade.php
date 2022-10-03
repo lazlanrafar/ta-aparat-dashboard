@@ -27,6 +27,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Tanggal</th>
+                                        <th>Waktu</th>
+                                        <th>Tempat</th>
                                         <th>Agenda</th>
                                         <th>Isi Notulen</th>
                                         <th>Aksi</th>
@@ -38,8 +40,12 @@
                                         <tr>
                                             <td>{{ $i }}</td>
                                             <td>{{ $item->tgl_notulen }}</td>
+                                            <td>
+                                                {{ $item->jam_mulai }} sd {{ $item->jam_selesai }}
+                                            </td>
+                                            <td>{{ $item->tempat }}</td>
                                             <td>{{ $item->agenda }}</td>
-                                            <td>{{ Str::limit($item->isi_notulen, 100) }}</td>
+                                            <td>{!! Str::limit($item->isi_notulen, 100) !!}</td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
                                                     action="{{ route('notulen.destroy', $item->id) }}" method="POST"

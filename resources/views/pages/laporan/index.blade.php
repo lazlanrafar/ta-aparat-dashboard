@@ -61,7 +61,7 @@
                                             <td>{{ $i }}</td>
                                             <td>{{ $item->ruangan->nama_ruangan }}</td>
                                             <td>{{ $item->agenda }}</td>
-                                            <td>{{ $item->created_at }}</td>
+                                            <td>{{ $item->tgl_booking }}</td>
                                             <td>{{ $item->jam_mulai }}</td>
                                             <td>{{ $item->jam_selesai }}</td>
                                         </tr>
