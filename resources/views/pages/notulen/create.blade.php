@@ -20,14 +20,14 @@
                     </div>
                     <div class="form-group">
                         <label for="tempat">Tempat</label>
-                        <input type="text" class="form-control" id="tempat"
-                            placeholder="Masukan Tempat" name="tempat" required />
+                        <input type="text" class="form-control" id="tempat" placeholder="Masukan Tempat"
+                            name="tempat" required />
                     </div>
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="jam_mulai">Waktu Mulai</label>
-                            <input type="time" class="form-control" id="jam_mulai"
-                                placeholder="Masukan Waktu Mulai" name="jam_mulai" required />
+                            <input type="time" class="form-control" id="jam_mulai" placeholder="Masukan Waktu Mulai"
+                                name="jam_mulai" required />
                         </div>
                         <div class="form-group col-6">
                             <label for="jam_selesai">Waktu Selesai</label>
@@ -37,12 +37,12 @@
                     </div>
                     <div class="form-group">
                         <label for="agenda">Agenda Acara</label>
-                        <textarea class="form-control" name="agenda" id="agenda" rows="3" placeholder="Masukan Agenda Acara">-</textarea> 
+                        <textarea class="form-control" name="agenda" id="agenda" rows="3" placeholder="Masukan Agenda Acara">-</textarea>
                     </div>
                     <div class="form-group">
                         <label for="isi_notulen">Isi Notulen</label>
-                        <textarea class="form-control ckeditor" name="isi_notulen" id="isi_notulen" rows="5" 
-                        placeholder="Masukan Isi Notulen">-</textarea> 
+                        <textarea class="form-control ckeditor" name="isi_notulen" id="isi_notulen" rows="5"
+                            placeholder="Masukan Isi Notulen"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
