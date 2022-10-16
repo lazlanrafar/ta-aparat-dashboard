@@ -47,6 +47,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Nama Pegawai</th>
                                         <th>Nama Ruangan</th>
                                         <th>Agenda</th>
                                         <th>Tanggal</th>
@@ -59,9 +60,13 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>
+                                                {{ $item->user->nama }} - 
+                                                {{ $item->user->jabatan }}
+                                            </td>
                                             <td>{{ $item->ruangan->nama_ruangan }}</td>
                                             <td>{{ $item->agenda }}</td>
-                                            <td>{{ $item->created_at }}</td>
+                                            <td>{{ $item->tgl_booking }}</td>
                                             <td>{{ $item->jam_mulai }}</td>
                                             <td>{{ $item->jam_selesai }}</td>
                                         </tr>

@@ -18,6 +18,9 @@ return new class extends Migration
             $table->integer('id_user');
             $table->date('tgl_notulen');
             $table->string('agenda');
+            $table->string('jam_mulai');
+            $table->string('jam_selesai');
+            $table->string('tempat');
             $table->text('isi_notulen');
             $table->timestamps();
         });

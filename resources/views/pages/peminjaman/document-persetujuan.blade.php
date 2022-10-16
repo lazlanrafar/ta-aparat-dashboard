@@ -41,8 +41,7 @@
             di Tempat
         </p>
         <p>Dengan hormat,</p>
-        <p>Berdasarkan dengan permohonan peminjaman ruang rapat pada tanggal 27 Juli 2022 perihal pelaksanaan “ Rapat
-            Koordinasi Akhir Standarisasi “ pada :</p>
+        <p>Berdasarkan dengan permohonan peminjaman ruang rapat pada tanggal {{ $data->tgl_booking }} perihal pelaksanaan “{{ $data->agenda }}“ pada :</p>
         <table class="ml-5">
             <tr>
                 <td style="min-width: 100px">Tanggal</td>

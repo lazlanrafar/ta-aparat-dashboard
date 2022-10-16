@@ -24,140 +24,86 @@
                                         class="fa fa-plus"></i> Tambah</a>
                                 @include('pages.peminjaman.create')
                             @endif
+                            @if ($level == 'Administrasi Umum')
+                            <form action="/peminjaman" method="POST" class="mb-5">
+                                @csrf
+                                <div class="row align-items-end justify-content-center justify-content-md-start mb-md-3">
+                                    <div class="col-12 col-md-4 col-lg-3">
+                                        <div class="form-group mb-md-0">
+                                            <label for="">Tanggal Awal</label>
+                                            <input type="datetime-local" class="form-control" name="from_date" required
+                                                id="dari_tanggal" value="{{ $from_date }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-3">
+                                        <div class="form-group mb-md-0">
+                                            <label for="">Tanggal Akhir</label>
+                                            <input type="datetime-local" class="form-control" name="end_date" required
+                                                id="sampai_tanggal" value="{{ $end_date }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-3">
+                                        <div class="form-group mb-md-0">
+                                            <label for="">Ruangan</label>
+                                            <select class="form-control" id="ruang_rapat" name="ruang_rapat" required>
+                                    <option value="">-- Pilih Ruangan --</option>
+                                    @foreach ($list_ruangan as $l)
+                                        <option value="{{ $l->id }}" <?php if ($l->id == $ruang_rapat): echo 'selected'; ?>
+                                        <?php endif ?>>
+                                            {{ $l->nama_ruangan }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-2 col-lg-1 mb-3 mb-md-0">
+                                        <button type="submit" class="btn btn-primary w-100">Filter</button>
+                                    </div>
+                                    <div class="col-6 col-md-2 col-lg-1 mb-3 mb-md-0">
+                                        <a href="/peminjaman" class="btn btn-danger w-100">reset</a>
+                                    </div>
+                                </div>
+                            </form>
+                            @endif
                             <table id="defaultTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Tanggal</th>
+                                        <th>Nama Pegawai</th>
                                         <th>Nama Ruangan</th>
                                         <th>Agenda</th>
                                         <th>Tanggal Booking</th>
+                                        <th>Waktu Rapat</th>
                                         <th>Status</th>
                                         <th>Status Apv 1</th>
                                         <th>Status Apv 2</th>
+                                        <th>Keterangan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1; ?>
-                                    @foreach ($items as $item)
-                                        <tr>
-                                            <td>{{ $i }}</td>
-                                            <td>{{ $item->created_at }}</td>
-                                            <td>{{ $item->ruangan->nama_ruangan }}</td>
-                                            <td>{{ $item->agenda }}</td>
-                                            <td>{{ $item->tgl_booking }}</td>
-                                            <td>
-                                                @include('includes.status-table', [
-                                                    'status' => $item->status,
-                                                ])
-                                            </td>
-                                            <td>
-                                                @include('includes.status-table', [
-                                                    'status' => $item->status_approv1,
-                                                ])
-                                            </td>
-                                            <td>
-                                                @include('includes.status-table', [
-                                                    'status' => $item->status_approv2,
-                                                ])
-                                            </td>
-                                            <td>
-                                                @if ($level == 'Pegawai' && $item->status == 'Menunggu')
-                                                    <form id="formDelete{{ $item->id }}"
-                                                        action="{{ route('peminjaman.destroy', $item->id) }}" method="POST"
-                                                        class="d-inline">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <a type="button" class="btn btn-danger"
-                                                            onclick="handleDelete({{ $item->id }})">
-                                                            <i class="fa fa-trash"></i>
-                                                        </a>
-                                                    </form>
-
-                                                    <script>
-                                                        function handleDelete(id) {
-                                                            Swal.fire({
-                                                                title: 'Apakah kamu yakin?',
-                                                                text: "kamu akan menghapus data ini!",
-                                                                icon: 'warning',
-                                                                showCancelButton: true,
-                                                                confirmButtonColor: '#3085d6',
-                                                                cancelButtonColor: '#d33',
-                                                                confirmButtonText: 'Ya, hapus!'
-                                                            }).then((result) => {
-                                                                if (result.isConfirmed) {
-                                                                    document.getElementById('formDelete' + id).submit();
-                                                                }
-                                                            })
-                                                        }
-                                                    </script>
-                                                @endif
-
-                                                @if ($level == 'Administrasi Umum' && $item->status == 'Menunggu')
-                                                    <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status')"
-                                                        class="btn btn-primary">Konfirmasi</a>
-                                                @elseif ($level == 'Kabag Umum' && $item->status_approv2 == 'Menunggu')
-                                                    <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status_approv2')"
-                                                        class="btn btn-primary">Konfirmasi</a>
-                                                @elseif ($level == 'Kasubbag Kepegawaian' && $item->status_approv1 == 'Menunggu')
-                                                    <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status_approv1')"
-                                                        class="btn btn-primary">Konfirmasi</a>
-                                                @endif
-
-                                                <script>
-                                                    function handleKonfirmasi(url) {
-                                                        Swal.fire({
-                                                            title: 'Apakah kamu yakin?',
-                                                            text: "kamu akan mengkonfirmasi peminjaman ini!",
-                                                            icon: 'warning',
-                                                            showCancelButton: true,
-                                                            confirmButtonColor: '#3085d6',
-                                                            cancelButtonColor: '#d33',
-                                                            confirmButtonText: 'Ya, konfirmasi!'
-                                                        }).then((result) => {
-                                                            if (result.isConfirmed) {
-                                                                location.href = url
-                                                            }
-                                                        })
-                                                    }
-                                                </script>
-
-                                                @if($level != "Pegawai")
-                                                    @if($item->status == 'Menunggu' || $item->status_approv1 == 'Menunggu' || $item->status_approv2 == 'Menunggu')
-                                                        <a onclick="handleTolak()"
-                                                            class="btn btn-danger">Tolak</a>
-                                                        <script>
-                                                            function handleTolak() {
-                                                                Swal.fire({
-                                                                    title: 'Apakah kamu yakin?',
-                                                                    text: "kamu akan menolak peminjaman ini!",
-                                                                    icon: 'warning',
-                                                                    showCancelButton: true,
-                                                                    confirmButtonColor: '#3085d6',
-                                                                    cancelButtonColor: '#d33',
-                                                                    confirmButtonText: 'Ya, tolak!'
-                                                                }).then((result) => {
-                                                                    if (result.isConfirmed) {
-                                                                        location.href = "/peminjaman/{{ $item->id }}/tolak"
-                                                                    }
-                                                                })
-                                                            }
-                                                        </script>
-                                                    @endif
-                                                @endif
-
-                                                @if ($item->status == 'Diverifikasi' &&
-                                                    $item->status_approv1 == 'Disetujui' &&
-                                                    $item->status_approv2 == 'Disetujui')
-                                                    <a href="/peminjaman-print/{{ $item->id }}" target="_BLANK"
-                                                        class="btn btn-primary">
-                                                        <i class="fa fa-print"></i>
-                                                    </a>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        <?php $i++; ?>
+                                    @foreach ($items_menunggu as $item)
+                                        @include('pages.peminjaman.table', [
+                                            'i' => $i,
+                                            'item' => $item
+                                            ])
+                                            <?php $i++; ?>
+                                    @endforeach
+                                    @foreach ($items_diverifikasi as $item)
+                                        @include('pages.peminjaman.table', [
+                                            'i' => $i,
+                                            'item' => $item
+                                            ])
+                                            <?php $i++; ?>
+                                    @endforeach
+                                    @foreach ($items_ditolak as $item)
+                                        @include('pages.peminjaman.table', [
+                                            'i' => $i,
+                                            'item' => $item
+                                            ])
+                                    <?php $i++; ?>
                                     @endforeach
                                 </tbody>
                             </table>

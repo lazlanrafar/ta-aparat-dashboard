@@ -18,19 +18,54 @@ class PeminjamanController extends Controller
         $list_ruangan = Ruangan::all();
         $level = auth()->user()->level;
 
-        if($level == 'Kabag Umum' || $level == 'Kasubbag Kepegawaian'){
+        if($level == 'Kasubbag Kepegawaian'){
             $items = Peminjaman::where('status', '!=', 'Menunggu')
                 ->get();
-        }else if($level == 'Pegawai'){
+        }else if($level == 'Kabag Umum'){
+            $items = Peminjaman::where('status', '!=', 'Menunggu')
+                ->where('status_approv1', '!=', 'Menunggu')
+                ->get();
+        } else if($level == 'Pegawai'){
             $items = Peminjaman::where('id_user', '=', auth()->user()->id)->get();
-        } else{
+        } else {
             $items = Peminjaman::all();
         }
 
+        $from_date = '';
+        $end_date = '';
+        $ruang_rapat = '';
+
         return view('pages.peminjaman.index', [
-            'items' => $items,
+            'items_menunggu' => $items->where('status', 'Menunggu'),
+            'items_diverifikasi' => $items->where('status', 'Diverifikasi'),
+            'items_ditolak' => $items->where('status', 'Ditolak'),
             'list_ruangan' => $list_ruangan,
-            'level' => $level
+            'level' => $level,
+            'ruang_rapat' => $ruang_rapat,
+            'from_date' => $from_date,
+            'end_date' => $end_date
+        ]);
+    }
+
+    public function filter(Request $request){
+        $list_ruangan = Ruangan::all();
+        $level = auth()->user()->level;
+
+        $from_date = $request->from_date;
+        $end_date = $request->end_date;
+        $ruangrapat = $request->ruang_rapat;
+        $items = Peminjaman::whereBetween('created_at', [$from_date, $end_date])
+            ->where('id_ruangan', '=', $ruangrapat)
+            ->get();
+        return view('pages.peminjaman.index', [
+            'items_menunggu' => $items->where('status', 'Menunggu'),
+            'items_diverifikasi' => $items->where('status', 'Diverifikasi'),
+            'items_ditolak' => $items->where('status', 'Ditolak'),
+            'list_ruangan' => $list_ruangan,
+            'ruang_rapat' => $ruangrapat,
+            'level' => $level,
+            'from_date' => $from_date,
+            'end_date' => $end_date
         ]);
     }
 
@@ -79,7 +114,7 @@ class PeminjamanController extends Controller
         }
 
         $item->save();
-        return redirect()->route('peminjaman.index')->with('success', 'Data berhasil diubah');
+        return redirect()->route('peminjaman.index')->with('success', 'Data berhasil disetujui');
     }
     
     /**
@@ -110,5 +145,17 @@ class PeminjamanController extends Controller
     {
         Peminjaman::find($id)->delete();
         return redirect()->route('peminjaman.index')->with('success', 'Data berhasil dihapus');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $item = $request->all();
+        $item['status'] = 'Ditolak';
+        $item['status_approv1'] = 'Ditolak';
+        $item['status_approv2'] = 'Ditolak';
+
+        $data = Peminjaman::find($id);
+        $data->update($item);
+        return redirect()->route('peminjaman.index')->with('success', 'Data berhasil ditolak');
     }
 }

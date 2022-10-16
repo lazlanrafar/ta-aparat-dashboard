@@ -38,6 +38,7 @@ Route::resource('/ruang-rapat', RuangRapatController::class)->middleware('auth')
 Route::resource('/peminjaman', PeminjamanController::class)->middleware('auth');
 Route::get('/peminjaman/{id}/{status}', [PeminjamanController::class, 'verify'])->middleware('auth');
 Route::get('/peminjaman-print/{id}', [PeminjamanController::class, 'print'])->middleware('auth');
+Route::post('/peminjaman', [PeminjamanController::class, 'filter'])->middleware('auth');
 
 Route::resource('/notulen', NotulenController::class)->middleware('auth');
 

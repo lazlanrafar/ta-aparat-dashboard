@@ -27,6 +27,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Tanggal</th>
+                                        <th>Waktu</th>
+                                        <th>Tempat</th>
                                         <th>Agenda</th>
                                         <th>Isi Notulen</th>
                                         <th>Aksi</th>
@@ -38,8 +40,12 @@
                                         <tr>
                                             <td>{{ $i }}</td>
                                             <td>{{ $item->tgl_notulen }}</td>
+                                            <td>
+                                                {{ $item->jam_mulai }} sd {{ $item->jam_selesai }}
+                                            </td>
+                                            <td>{{ $item->tempat }}</td>
                                             <td>{{ $item->agenda }}</td>
-                                            <td>{{ Str::limit($item->isi_notulen, 100) }}</td>
+                                            <td>{!! Str::limit($item->isi_notulen, 100) !!}</td>
                                             <td>
                                                 <form id="formDelete{{ $item->id }}"
                                                     action="{{ route('notulen.destroy', $item->id) }}" method="POST"
@@ -47,7 +53,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <a type="button" class="btn btn-danger"
-                                                        onclick="handleDelete({{ $item->id }})">
+                                                        onclick="handleDelete({{ $item->id }})" title="Hapus">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </form>
@@ -70,11 +76,11 @@
                                                     }
                                                 </script>
                                                 <a type="button" class="btn btn-warning" data-toggle="modal"
-                                                    data-target="#formUpdate{{ $item->id }}">
+                                                    data-target="#formUpdate{{ $item->id }}" title="Ubah">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a href="{{ route('notulen.show', $item->id) }}" target="_BLANK"
-                                                    class="btn btn-primary"><i class="fa fa-print"></i></a>
+                                                    class="btn btn-primary" title="Cetak"><i class="fa fa-print"></i></a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

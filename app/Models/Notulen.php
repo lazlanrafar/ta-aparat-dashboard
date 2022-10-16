@@ -19,5 +19,8 @@ class Notulen extends Model
         'tgl_notulen',
         'agenda',
         'isi_notulen',
+        'jam_mulai',
+        'jam_selesai',
+        'tempat',
     ];
 }
