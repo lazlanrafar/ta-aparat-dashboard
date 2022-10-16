@@ -10,7 +10,7 @@
                 </a>
             </div>
             <h6 class="text-center font-weight-bold">Aplikasi Peminjaman Ruang Rapat pada Kantor Walikota Batam</h6>
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Masuk untuk memulai sesi Anda</p>
             <form action="/login" method="post">
                 @csrf
                 <div class="input-group mb-3">
@@ -31,8 +31,8 @@
                 </div>
                 <div class="row justify-content-end">
                     <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" class="btn btn-success btn-block d-grid gap-2">Masuk</button>
                     </div>
                     <!-- /.col -->
                 </div>

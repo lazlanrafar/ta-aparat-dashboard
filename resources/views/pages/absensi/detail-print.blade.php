@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
         <div class="text-center">
             <h3>Daftar Absensi</h3>
         </div>
@@ -14,6 +14,11 @@
                 <td>Tanggal</td>
                 <td>:</td>
                 <td>{{ $data->tanggal }}</td>
+            </tr>
+            <tr>
+                <td>Waktu</td>
+                <td>:</td>
+                <td>{{ $data->jam_mulai }} sd {{ $data->jam_selesai }}</td>
             </tr>
             <tr>
                 <td>Agenda</td>

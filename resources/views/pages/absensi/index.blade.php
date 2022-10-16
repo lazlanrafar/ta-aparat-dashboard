@@ -58,7 +58,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <a type="button" class="btn btn-danger"
-                                                        onclick="handleDelete({{ $item->id }})">
+                                                        onclick="handleDelete({{ $item->id }})" title="Hapus">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </form>
@@ -82,11 +82,11 @@
                                                 </script>
 
                                                 <a type="button" class="btn btn-warning" data-toggle="modal"
-                                                    data-target="#formUpdate{{ $item->id }}">
+                                                    data-target="#formUpdate{{ $item->id }}" title="Ubah">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
 
-                                                <a href="/absensi/{{ $item->id }}" class="btn btn-primary">
+                                                <a href="/absensi/{{ $item->id }}" class="btn btn-primary" title="Melihat Detail">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </td>
