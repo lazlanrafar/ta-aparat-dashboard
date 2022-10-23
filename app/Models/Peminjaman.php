@@ -26,9 +26,14 @@ class Peminjaman extends Model
         'status',
         'status_approv1',
         'status_approv2',
+        'keterangan',
     ];
 
     public function ruangan(){
         return $this->belongsTo('App\Models\Ruangan', 'id_ruangan');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'id_user');
     }
 }

@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="level">Level</label>
+                                <label for="level">Akses</label>
                                 <select class="form-control" id="level" name="level" required>
                                     <option value="" selected>-- pilih Level --</option>
                                     @foreach ($list_level as $l)
@@ -88,7 +88,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
+                        Batal
                     </button>
                     <button type="submit" class="btn btn-primary">
                         Simpan

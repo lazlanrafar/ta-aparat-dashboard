@@ -10,9 +10,12 @@ use App\Models\Ruangan;
 class DashboardController extends Controller
 {
     public function index(){
+
+        $tgl = date('Y-m-d');
         $items = Peminjaman::where('status', '=', 'Diverifikasi')
         ->where('status_approv1', '=', 'Disetujui')
         ->where('status_approv2', '=', 'Disetujui')
+        ->where('tgl_booking', '>=', $tgl)
         ->get();
 
         $list_ruangan = Ruangan::all();

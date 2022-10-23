@@ -32,7 +32,7 @@
                                         <th>Email</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Jabatan</th>
-                                        <th>Level</th>
+                                        <th>Akses</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -55,7 +55,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <a type="button" class="btn btn-danger"
-                                                        onclick="handleDelete({{ $item->id }})">
+                                                        onclick="handleDelete({{ $item->id }})" title="Hapus">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </form>
@@ -78,7 +78,7 @@
                                                     }
                                                 </script>
                                                 <a type="button" class="btn btn-warning" data-toggle="modal"
-                                                    data-target="#formUpdate{{ $item->id }}">
+                                                    data-target="#formUpdate{{ $item->id }}" title="Ubah">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                             </td>

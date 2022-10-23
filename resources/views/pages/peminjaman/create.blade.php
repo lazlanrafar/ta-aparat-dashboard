@@ -44,6 +44,7 @@
                                     @foreach ($list_ruangan as $l)
                                         <option value="{{ $l->id }}">
                                             {{ $l->nama_ruangan }} -
+                                            {{ $l->kapasitas }} -
                                             {{ $l->lokasi }}
                                         </option>
                                     @endforeach
@@ -68,7 +69,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
+                        Batal
                     </button>
                     <button type="submit" class="btn btn-primary">
                         Simpan
