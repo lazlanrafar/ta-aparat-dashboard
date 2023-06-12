@@ -6,10 +6,11 @@
         <div class="card-body login-card-body">
             <div class="login-logo">
                 <a href="/">
-                    <img src="{{ url('/logo.png') }}" alt="Logo" width="100" />
+                    {{-- <img src="{{ url('/logo.png') }}" alt="Logo" width="100" /> --}}
+                    <h1 class="font-weight-bold text-success">Logo</h1>
                 </a>
             </div>
-            <h6 class="text-center font-weight-bold">Aplikasi Peminjaman Ruang Rapat pada Kantor Walikota Batam</h6>
+            <h6 class="text-center font-weight-bold">Aplikasi Peminjaman Ruang Rapat</h6>
             <p class="login-box-msg">Masuk untuk memulai sesi Anda</p>
             <form action="/login" method="post">
                 @csrf

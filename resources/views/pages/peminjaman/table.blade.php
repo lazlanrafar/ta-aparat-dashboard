@@ -61,23 +61,20 @@
         @endif
 
         @if ($level == 'Administrasi Umum' && $item->status == 'Menunggu')
-            <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status')" <<<<<<< HEAD class="btn btn-primary"
+            <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status')" class="btn btn-primary"
                 title="verifikasi"><i class="fa fa-check"></i></a>
         @elseif ($level == 'Kabag Umum' && $item->status_approv2 == 'Menunggu')
             <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status_approv2')" class="btn btn-primary"
                 title="Setujui"><i class="fa fa-check"></i></a>
         @elseif ($level == 'Kasubbag Kepegawaian' && $item->status_approv1 == 'Menunggu')
             <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status_approv1')" class="btn btn-primary"
-                title="Setujui"><i class="fa fa-check"></i></a>
-            =======
-            class="btn btn-primary">Konfirmasi</a>
+                title="Setujui"><i class="fa fa-check"></i>Konfirmasi</a>
         @elseif ($level == 'Kabag Umum' && $item->status_approv2 == 'Menunggu')
             <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status_approv2')"
                 class="btn btn-primary">Konfirmasi</a>
         @elseif ($level == 'Kasubbag Kepegawaian' && $item->status_approv1 == 'Menunggu')
             <a onclick="handleKonfirmasi('/peminjaman/{{ $item->id }}/status_approv1')"
                 class="btn btn-primary">Konfirmasi</a>
-            >>>>>>> 1113bf5d6f9d46d4db33959e563a64cc10ee860a
         @endif
 
         <script>
@@ -101,11 +98,8 @@
         @if ($level != 'Pegawai')
             @if ($item->status == 'Menunggu' || $item->status_approv1 == 'Menunggu' || $item->status_approv2 == 'Menunggu')
                 <a type="button" class="btn btn-danger" data-toggle="modal" <<<<<<< HEAD
-                    data-target="#formTolak{{ $item->id }}" title="Tolak"><i class="fa fa-ban"></i></a>
-                =======
-                data-target="#formTolak{{ $item->id }}">
+                    data-target="#formTolak{{ $item->id }}" title="Tolak"><i class="fa fa-ban"></i>
                 Tolak</a>
-                >>>>>>> 1113bf5d6f9d46d4db33959e563a64cc10ee860a
                 @include('pages.peminjaman.tolak-modal')
             @endif
         @endif
@@ -115,9 +109,6 @@
             $item->status_approv2 == 'Disetujui')
             <a href="/peminjaman-print/{{ $item->id }}" target="_BLANK" <<<<<<< HEAD class="btn btn-primary"
                 title="Cetak">
-                =======
-                class="btn btn-primary">
-                >>>>>>> 1113bf5d6f9d46d4db33959e563a64cc10ee860a
                 <i class="fa fa-print"></i>
             </a>
         @endif

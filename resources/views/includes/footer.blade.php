@@ -1,5 +1,5 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; 2022 - Dina Istikhomah
+    <strong>Copyright &copy; 2022 - Software Garage
     </strong>
     All rights reserved.
 </footer>

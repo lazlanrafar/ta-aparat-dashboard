@@ -1,8 +1,8 @@
-<aside class="main-sidebar sidebar-light-success elevation-4">
+<aside class="main-sidebar sidebar-light-success">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link bg-dark">
-        <img src="{{ url('/logo.png') }}" alt="Logo" class="brand-image" />
-        <span class="brand-text font-weight-normal">APARAT Kota Batam</span>
+    <a href="/" class="brand-link">
+        {{-- <img src="{{ url('/logo.png') }}" alt="Logo" class="brand-image" /> --}}
+        <span class="brand-text font-weight-bold text-success ml-3">LOGO</span>
     </a>
 
     <!-- Sidebar -->
